@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-dev": "webpack-dev-server --config webpack.dev.js --open",
-    "build": "webpack --config webpack.prod.js"
+    "build-app": "webpack --config webpack.prod.js"
   },
   "author": "Hanif R",
   "license": "ISC",
