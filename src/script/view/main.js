@@ -22,7 +22,7 @@ const main = () => {
     //call data from TMDB API
 
     //call latest-movie from tmdb and render latest-movie element
-    const latestMovieElement = document.querySelector("latest-movie");        
+    const latestMovieElement = document.querySelector("latest-movie");
     const latestMovie = (request_type) => {        
         LatestMovieData.getMovie(request_type)            
             .then(result => {
