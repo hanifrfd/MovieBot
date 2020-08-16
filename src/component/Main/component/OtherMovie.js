@@ -24,7 +24,7 @@ export class OtherMovie extends Component {
     }
     
     fetchMovie(){        
-        const {genre, popularity, page, listMovie} = this.state;        
+        const {genre, popularity, page} = this.state;        
         fetch(`${baseUrl}/discover/movie?api_key=${APIKey}&language=en-US&sort_by=popularity.${popularity}&include_adult=false&page=${page}&with_genres=${genre}`)
                     .then(response => response.json())
                     .then(data => 
@@ -75,7 +75,7 @@ export class OtherMovie extends Component {
     
 
     render() {
-        const { listMovie, listGenre, isMore, isLoading } = this.state;
+        const { listMovie, listGenre, isMore } = this.state;
         return (
             <div id="other-movies">
             <div className="section-title light">
