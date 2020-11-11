@@ -49,6 +49,10 @@ body {
     background: #555; 
   } 
 
+#latest-movie {
+    min-height: 200px;
+}
+
 #latest-movie, footer {    
     padding-left: 50px;
     padding-right: 50px;
@@ -71,7 +75,7 @@ body {
 
 .banner {    
     min-height: 482px;
-    background: url('./src/styles/img/banner2.png');
+    background: url('./img/banner2.png');
     background-repeat: no-repeat;
     background-size: cover;    
 }
