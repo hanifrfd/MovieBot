@@ -15,7 +15,7 @@ export class MovieItem extends Component {
                         poster_path ? <img src={poster} alt='poster' /> : <img src={noImg} alt='poster'></img>
                     }                    
                     <div className="movie-caption">                                                                            
-                        <div className="movie-info">
+                        <div className="movie-info" hidden>
                             <p>{release_date}</p>
                             <div className="movie-rate card">{vote_average}</div>
                         </div>    
