@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     [theme.breakpoints.down('sm')]: {
       width: 114.54,
-      height: 181.54,    
+      height: 141.54
     },
   },
   movieTitle:{
@@ -53,6 +53,9 @@ const useStyles = makeStyles((theme) => ({
   recomm:{
     marginTop: 32,
     padding: '0px 100px',
+    [theme.breakpoints.down('sm')]: {
+      padding: '0px 16px',
+    },
   },
   infoItem:{
     marginRight: 24

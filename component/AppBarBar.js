@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: 'none',
     zIndex: 1,
     [theme.breakpoints.down('sm')]: {
-      padding: '0px 12px',
+      padding: '0px 16px',      
     },
   },
   menuButton: {
@@ -34,6 +34,10 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar:{
     padding: 0,
+    [theme.breakpoints.down('sm')]: {      
+      display: 'flex',
+      justifyContent: 'space-between'
+    },
   },  
   title: {    
     '&:hover':{

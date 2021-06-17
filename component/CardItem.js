@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 8,
     backgroundSize: '100% 100%',
     backgroundPosition: '0% 0%',
-    backgroundRepeat: 'no-repeat'
+    backgroundRepeat: 'no-repeat',
+    
   },
   movie: {    
     minWidth: '11vw',
@@ -23,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
     
     [theme.breakpoints.down('sm')]: {
       marginBottom: 16,
-      minWidth: '45vw',
+      minWidth: '24vw',
+      height: 100
     },
   },  
   trailer: {    
@@ -34,7 +36,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center center',
     [theme.breakpoints.down('sm')]: {
       marginBottom: 16,
-      minWidth: '57vw',
+      minWidth: '47vw',
+      height: 100
     },
   },
   videoContainer: {

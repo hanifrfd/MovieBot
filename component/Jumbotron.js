@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
       backgroundSize: 'cover',
       backgroundPosition: 'center center',
       backgroundRepeat: 'no-repeat',
-      [theme.breakpoints.down('sm')]: {
-        height: '15vh',
+      [theme.breakpoints.down('sm')]: {        
+        height: '50vh',
       },
   }
 }));
