@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
   movieInfo:{
     padding: '0px 100px',
     marginTop: -70,
+    [theme.breakpoints.down('sm')]: {
+      padding: '0px 16px',
+    },
   },
   card:{
     width: 214.54,
@@ -29,7 +32,11 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 8,
     backgroundSize: '100% 100%',
     backgroundPosition: '0% 0%',
-    backgroundRepeat: 'no-repeat'
+    backgroundRepeat: 'no-repeat',
+    [theme.breakpoints.down('sm')]: {
+      width: 114.54,
+      height: 181.54,    
+    },
   },
   movieTitle:{
     display: 'flex',

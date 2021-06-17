@@ -19,7 +19,10 @@ const useStyles = makeStyles((theme) => ({
       // backgroundImage: `url(${'/1.png'})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center center',
-      backgroundRepeat: 'no-repeat'
+      backgroundRepeat: 'no-repeat',
+      [theme.breakpoints.down('sm')]: {
+        height: '15vh',
+      },
   }
 }));
 
