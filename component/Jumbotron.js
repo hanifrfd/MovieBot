@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundPosition: 'center center',
       backgroundRepeat: 'no-repeat',
       [theme.breakpoints.down('sm')]: {        
-        height: '50vh',
+        height: '45vh',
       },
   }
 }));
