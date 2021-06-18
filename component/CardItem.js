@@ -24,20 +24,20 @@ const useStyles = makeStyles((theme) => ({
     
     [theme.breakpoints.down('sm')]: {
       marginBottom: 16,
-      minWidth: '24vw',
-      height: 100
+      minWidth: 100,
+      height: 130
     },
   },  
   trailer: {    
     minWidth: '17vw',
     height: 130,    
-
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
-    [theme.breakpoints.down('sm')]: {
-      marginBottom: 16,
-      minWidth: '47vw',
-      height: 100
+
+    [theme.breakpoints.down('sm')]: {      
+      minWidth: 236,
+      height: 130,
+      padding: 0,
     },
   },
   videoContainer: {
@@ -51,7 +51,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
     zIndex: 9,
     padding: '8vh 0px',
-    backgroundColor: '#000'
+    backgroundColor: '#000',
+    [theme.breakpoints.down('sm')]: {      
+      padding: '30% 0px',
+    },
   },
   videoController:{    
     backgroundColor: '#000',

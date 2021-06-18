@@ -2,7 +2,7 @@
 
 import Head from 'next/head'
 import {useEffect, useState} from 'react'
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 import useSWR from 'swr'
 
 import { getMovie, getTrailer, getCast, getRecomm } from '../../data/movie_data'
@@ -18,12 +18,18 @@ import {
   Divider
 } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({  
   movieInfo:{
     padding: '0px 100px',
     marginTop: -70,
     [theme.breakpoints.down('sm')]: {
-      padding: '0px 16px',
+      padding: '0px 16px',      
+    },
+  },
+  movieContainer:{
+    [theme.breakpoints.down('sm')]: {    
+      justifyContent: 'center',
+      textAlign: 'center',
     },
   },
   card:{
@@ -36,38 +42,64 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: '0% 0%',
     backgroundRepeat: 'no-repeat',
     [theme.breakpoints.down('sm')]: {
-      width: 114.54,
-      height: 141.54
+      width: 131.33,
+      height: 171.73,
+      marginBottom: 0,
+      marginRight: 0,      
     },
   },
   movieTitle:{
     display: 'flex',
     flexDirection: 'column',
     marginLeft: 54,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: 0,
+      marginTop: 24,      
+    },
   },
   movieTitleInfo:{
     marginTop: 24,
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: 0,
+      marginTop: 24,
+      justifyContent: 'center'            
+    },
   },
   section:{
+    display: 'flex',
     marginTop: 32,
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'row',
+      padding: '0px'
+    },
   },
   recomm:{
     marginTop: 32,
     padding: '0px 100px',
     [theme.breakpoints.down('sm')]: {
+      marginTop: 18,
       padding: '0px 16px',
+      justifyContent: 'center'
     },
   },
   infoItem:{
-    marginRight: 24
+    marginRight: 24,
+    [theme.breakpoints.down('sm')]: {
+      marginRight: 8,
+    },
   },
   moviInfo_label:{
-    marginBottom: 24,
+    marginBottom: 24,    
+  },
+  moviInfo_overview:{
+    paddingRight:20,
+    [theme.breakpoints.down('sm')]: {
+      padding: 0,
+      marginBottom: 24
+    },
   }
 }));
-
-const fetcher = url => fetch(url).then(r => r.json())
 
 export default function movieInfo() {
   const classes = useStyles();    
@@ -79,13 +111,7 @@ export default function movieInfo() {
   const {recomm} = getRecomm(router.query.movie_id);
   
   if(!movie){       
-    return (
-      <div>
-        {
-          console.log(movie)
-        }
-      </div>
-    )
+    return ( <div> { console.log('nothing') }</div> )
   }else{    
     return (
       <div >
@@ -97,7 +123,7 @@ export default function movieInfo() {
         <Jumbotron img={movie}></Jumbotron>
         <main>
         <Grid container className={classes.movieInfo}>
-          <Grid item container xs={12}>
+          <Grid item container xs={12} className={classes.movieContainer}>
             <Grid item>
               <Card className={classes.card} style={{ backgroundImage: `url("https://image.tmdb.org/t/p/w500${movie.poster_path}")`}}></Card>
             </Grid>           
@@ -117,15 +143,15 @@ export default function movieInfo() {
             </div>
           </Grid>
           <Grid item container xs={12} className={classes.section}>
-            <Grid item xs={6}>
+            <Grid item md={6} xs={12}>
               <Typography variant="h6" className={classes.moviInfo_label}>
                 Overview
               </Typography>
-              <Typography variant="subtitle2" style={{paddingRight:20}}>
+              <Typography variant="subtitle2" className={classes.moviInfo_overview}>
                 {movie.overview}
               </Typography>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item md={2} xs={4}>
             <Typography variant="h6" className={classes.moviInfo_label}>
                 Director
               </Typography>
@@ -133,7 +159,7 @@ export default function movieInfo() {
                 Christoper Nolan
               </Typography>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item md={2} xs={4}>
             <Typography variant="h6" className={classes.moviInfo_label}>
                 Revenue
               </Typography>
@@ -141,7 +167,7 @@ export default function movieInfo() {
                 ${movie.revenue}
               </Typography>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item md={2} xs={4}>
             <Typography variant="h6" className={classes.moviInfo_label}>
                 Budget
               </Typography>

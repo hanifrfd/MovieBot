@@ -12,8 +12,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 12,
     width: '100%',
     [theme.breakpoints.down('sm')]: {
-      marginTop: 16,
-      padding: 12,
+      marginTop: 8,
+      padding: 0,
     },    
   },
   listItem:{
@@ -31,7 +31,17 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 24,
     '&::-webkit-scrollbar': {        
       display: 'none'
-    }
+    },
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'space-between',      
+    },    
+  },
+  nothing:{
+    width: '100%',
+    minHeight: '30vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 }));
 
@@ -59,7 +69,10 @@ export default function ListItem({title, type, datas, list}) {
                   number.cast.map((data, index) =>
                     <CardItem key={index} type={type} data={data}>{number}</CardItem>
                   )
-                : 'something here'                
+                : 
+                <div className={classes.nothing}>
+                  <Typography variant="subtitile">Still nothing here</Typography>
+                </div>                
               }        
             </div>
           </Grid>

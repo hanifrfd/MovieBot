@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,7 +8,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 
 import { useRouter } from 'next/router'
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
     [theme.breakpoints.down('sm')]: {
       display: 'block',
+      marginRight: theme.spacing(0),
     },
   },
   toolbar:{
@@ -47,20 +47,57 @@ const useStyles = makeStyles((theme) => ({
   },
   menu:{
     display: 'flex',    
-    [theme.breakpoints.down('sm')]: {
-      display: 'none',
-    },
     marginLeft: 'auto',
+    [theme.breakpoints.down('sm')]: {
+      position: 'absolute',
+      width: '100vw',
+      height: '100vh',
+      backgroundColor: '#1C1C1C',      
+      left: -400,
+      top: 0,
+      flexDirection: 'column',      
+      transition : 'left 0.6s',
+    },    
+  },
+  isOpen:{
+    
+      left: -16,      
+    
   },
   menuItem:{
     marginLeft: 36,
-    padding: 0
+    padding: 0,    
+    [theme.breakpoints.down('sm')]: {
+      marginTop: 18,
+      marginLeft: 16,
+      marginRight: 24,
+    },
+  },
+  search:{
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
+  close:{
+    textAlign: 'right',
+    display:'none',
+    [theme.breakpoints.down('sm')]: {
+      display: 'block',
+    },
   }
+
 }));
 
 export default function AppBarBar() {
   const classes = useStyles();
   const router = useRouter();
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const chgOpen = () => {
+    setIsOpen(!isOpen);    
+    console.log('halo')
+  }
 
   return (
     <div className={classes.root}>
@@ -69,13 +106,14 @@ export default function AppBarBar() {
           <Typography variant="h6" className={classes.title} onClick={() => router.push('/')}>
             MOVIEBOT
           </Typography>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={() => chgOpen()}>
             <MenuIcon />
           </IconButton>
-          <div className={classes.menu}>
+          <div className={`${classes.menu} ${isOpen ? classes.isOpen : ''}`}>
+            <Typography variant="subtitle1" color="inherit" className={`${classes.menuItem} ${classes.close}`} onClick={() => chgOpen()}>X</Typography>
             <Typography variant="subtitle1" color="inherit" className={classes.menuItem}>Movies</Typography>
             <Typography variant="subtitle1" color="inherit" className={classes.menuItem}>TV Series</Typography>
-            <IconButton edge="start" color="inherit" className={classes.menuItem} aria-label="search">
+            <IconButton edge="start" color="inherit" className={`${classes.menuItem} ${classes.search}`} aria-label="search">
               <SearchIcon />
             </IconButton>
           </div>

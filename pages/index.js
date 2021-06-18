@@ -4,10 +4,21 @@ import AppBarBar from '../component/AppBarBar'
 import Jumbotron from '../component/Jumbotron'
 import ListItem from '../component/ListItem'
 
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  main: {    
+    paddingLeft: 20,
+    [theme.breakpoints.down('sm')]: {      
+      padding: 16,
+    },    
+  },
+
+}));
+
 export default function Home(props) {
-  // console.log(props.popularMovie);
-  // console.log(props.popularTv);
-  // console.log(props.latestMovie);
+  const classes = useStyles();
+
   return (
     <div >
       <Head>
@@ -16,7 +27,7 @@ export default function Home(props) {
       </Head>
       <AppBarBar></AppBarBar>
       <Jumbotron></Jumbotron>
-      <main style={{ paddingLeft: 50 }}>
+      <main className={classes.main}>
        <ListItem title="Popular Movie" type='movie' datas={props.popularMovie}></ListItem>
        <ListItem title="Popular TV Series" type='tv' datas={props.popularTv}></ListItem>
        <ListItem title="Trailer" type='trailer'></ListItem>
