@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
       backgroundRepeat: 'no-repeat',
       [theme.breakpoints.down('sm')]: {        
         height: '35vh',
-      },
+        textAlign: 'center'
+      },      
   }
 }));
 
@@ -34,7 +35,7 @@ export default function Jumbotron({img}) {
   return (
     <div className={classes.root}>
       <Grid container className={classes.jumbotron}  style={{ backgroundImage: background }}>
-        <Typography variant="h4">Welcome to moviebot</Typography>
+        {/* <Typography variant="h4">Welcome to moviebot</Typography> */}
       </Grid>
     </div>
   );

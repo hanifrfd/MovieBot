@@ -15,8 +15,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 8,
     backgroundSize: '100% 100%',
     backgroundPosition: '0% 0%',
-    backgroundRepeat: 'no-repeat',
-    
+    backgroundRepeat: 'no-repeat',    
   },
   movie: {    
     minWidth: '11vw',
@@ -24,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
     
     [theme.breakpoints.down('sm')]: {
       marginBottom: 16,
-      minWidth: 100,
-      height: 130
+      minWidth: '40vw',
+      height: '50vw'
     },
   },  
   trailer: {    

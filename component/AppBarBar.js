@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import InputBase from '@material-ui/core/InputBase';
 
 import { useRouter } from 'next/router'
 
@@ -29,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
     [theme.breakpoints.down('sm')]: {
       display: 'block',
-      marginRight: theme.spacing(0),
+      marginLeft: 0
     },
   },
   toolbar:{
@@ -53,16 +54,14 @@ const useStyles = makeStyles((theme) => ({
       width: '100vw',
       height: '100vh',
       backgroundColor: '#1C1C1C',      
-      left: -400,
+      left: -500,
       top: 0,
       flexDirection: 'column',      
       transition : 'left 0.6s',
     },    
   },
-  isOpen:{
-    
-      left: -16,      
-    
+  isOpen:{    
+      left: -16,
   },
   menuItem:{
     marginLeft: 36,
@@ -84,8 +83,29 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       display: 'block',
     },
+  },  
+  searchContainer:{
+    position: 'absolute',
+    top: 0,    
+    left: '-11100px',
+    width: '100vw',
+    height: '100vh',
+    backgroundColor: '#1C1C1C',
+    
+    transition: 'left 1s',
+  },
+  searchOpen:{    
+    left: -16,
+  },
+  searchBox:{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '100px 0px 0px 0px'
+  },
+  inputRoot:{
+    marginLeft: 16
   }
-
 }));
 
 export default function AppBarBar() {
@@ -93,10 +113,25 @@ export default function AppBarBar() {
   const router = useRouter();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
+
+  const [search, setSearch] = useState('');
 
   const chgOpen = () => {
     setIsOpen(!isOpen);    
     console.log('halo')
+  }
+
+  const chgSearchOpen = () => {
+    setIsSearch(!isSearch);    
+    console.log('haslo')
+  }
+
+  const chgSearch = () => {      
+    console.log(search);
+    if(search !== ''){
+      router.push('/search/' + search)  
+    }
   }
 
   return (
@@ -106,19 +141,42 @@ export default function AppBarBar() {
           <Typography variant="h6" className={classes.title} onClick={() => router.push('/')}>
             MOVIEBOT
           </Typography>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={() => chgOpen()}>
-            <MenuIcon />
-          </IconButton>
+          <div className={classes.menuButton}>
+            <IconButton edge="start" color="inherit" className={``} aria-label="search" onClick={() => chgSearchOpen()}>
+                <SearchIcon />
+            </IconButton>
+            <IconButton edge="start"  color="inherit" aria-label="menu" onClick={() => chgOpen()}>
+              <MenuIcon />
+            </IconButton>
+          </div>
           <div className={`${classes.menu} ${isOpen ? classes.isOpen : ''}`}>
             <Typography variant="subtitle1" color="inherit" className={`${classes.menuItem} ${classes.close}`} onClick={() => chgOpen()}>X</Typography>
             <Typography variant="subtitle1" color="inherit" className={classes.menuItem}>Movies</Typography>
             <Typography variant="subtitle1" color="inherit" className={classes.menuItem}>TV Series</Typography>
-            <IconButton edge="start" color="inherit" className={`${classes.menuItem} ${classes.search}`} aria-label="search">
+            <IconButton edge="start" color="inherit" className={`${classes.menuItem} ${classes.search}`} aria-label="search" onClick={() => chgSearchOpen()}>
               <SearchIcon />
             </IconButton>
           </div>
         </Toolbar>
       </AppBar>
+      <div className={`${classes.searchContainer} ${isSearch ? classes.searchOpen : ''}`}>
+          
+          <div className={classes.searchBox}>                
+            <Typography variant="subtitle1" color="inherit" className={`${classes.menuItem} ${classes.close}`} onClick={() => chgSearchOpen()}>X</Typography>
+                <InputBase
+                  placeholder="Search…"
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                  }}
+                  onChange={(e) => setSearch(e.target.value)}
+                  inputProps={{ 'aria-label': 'search' }}
+                />
+                <div className={classes.searchIcon} onClick={() => chgSearch()}>
+                  <SearchIcon />
+                </div>
+          </div>
+      </div>
     </div>
   );
 }
