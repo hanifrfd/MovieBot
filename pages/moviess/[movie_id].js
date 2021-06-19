@@ -214,7 +214,7 @@ export default function movieInfo({movie,trailer,cast,recomm}) {
 //   }
 // }
 
-export async function getServerSideProps(context) {  
+export async function getInitialProps(context) {  
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${context.params.movie_id}?api_key=ec4bdffc57939748a8ae19503628e514&language=en-US`
   )
