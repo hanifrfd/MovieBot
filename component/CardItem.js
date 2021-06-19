@@ -130,5 +130,5 @@ export default function CardItem({type, data}) {
         </div>    
     }
     </div>
- 
+ ) ;
 }
