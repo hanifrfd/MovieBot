@@ -8,5 +8,11 @@ module.exports = {
       )
       return config
     },    
-    trailingSlash: true
+    trailingSlash: true,
+    exportPathMap: async function(){
+      return {
+        '/movie/[movie_id]' : { page : '/movie/[movie_id]'},
+        '/tv/[tv_id]' : { page : '/tv/[tv_id]'},
+      }
+    }
   }
