@@ -71,7 +71,7 @@ export default function ListItem({title, type, datas, list}) {
                   )
                 : 
                 <div className={classes.nothing}>
-                  <Typography variant="subtitile">Still nothing here</Typography>
+                  <Typography variant="subtitle">Still nothing here</Typography>
                 </div>                
               }        
             </div>
