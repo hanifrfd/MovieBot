@@ -105,7 +105,7 @@ export default function CardItem({type, data}) {
         type !== 'trailer' ?
         <Card 
           className={`${type === 'trailer' ? classes.trailer : classes.movie} ${classes.card }`} 
-          onClick={() => type !== 'movie' ? router.push('/tv/[tv_id]','/tv/' + data.id) : router.push('/movie/[movie_id]','/movie/' + data.id)} 
+          onClick={() => type !== 'movie' ? router.push('/tv/[tv_id]',`/tv/${data.id}`) : router.push('/movie/[movie_id]','/movie/' + data.id)} 
           style={{ 
             backgroundImage:`${ bgImage() }`
           }}
@@ -130,5 +130,5 @@ export default function CardItem({type, data}) {
         </div>    
     }
     </div>
-  );
+ 
 }
