@@ -44,7 +44,7 @@ export default function Home(props) {
 
 export async function getStaticProps() {  
 
-  const resPopularMovie = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=ec4bdffc57939748a8ae19503628e514&language=en-US&page=1')
+  const resPopularMovie = await fetch('https://api.themoviedb.org/3/trending/all/day?api_key=ec4bdffc57939748a8ae19503628e514')
   const popularMovie = await resPopularMovie.json()
 
   const resPopularTv = await fetch('https://api.themoviedb.org/3/tv/popular?api_key=ec4bdffc57939748a8ae19503628e514&language=en-US&page=1')
